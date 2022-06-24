@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script>
+    const root = document.getElementById("root");
+    // 이런 방식은 보통 절대로 사용하지 않는다.
+    const span = React.createElement(
+        "h3", 
+        // { id: "sexy-span", style: {color:"red"} }, 
+        { 
+            id: "Title",
+            onMouseEnter: () => console.log("mouse enter")
+        },
+        "Hello I'm a span"
+        );
+    const btn = React.createElement("button", {
+        onClick: () => console.log("I'm Clicked"),
+    }, "Click me");
+    const container = React.createElement("div", null, [span, btn]);
+    // ReactDOM.render(span, root);
+    // ReactDOM.render(btn, root);
+    ReactDOM.render(container, root);
+</script>
+</html>
