@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    const root = document.getElementById("root");
+ 
+    // This is "a good way" to rerender!!
+
+    function App() {
+        // const data = React.useState(defaultData) -> data[0] : current state(=default data), data[1] : function to do with data
+        /*
+        const data = React.useState(0);
+        console.log(data);
+        const counter = data[0];
+        const modifier = data[1];
+        */
+        const[counter, modifier] = React.useState(0);
+
+        const onClick = () => {
+            // [방법1]
+            // modifier(counter + 1);      // the modifier function will automatically rerender!
+            // [방법2]
+            modifier((current) => current + 1);
+        }
+
+        return(
+            <div>
+                <h3>Total clicks: {counter}</h3>
+                <button onClick={onClick}>Click me</button>
+            </div>
+        );
+    }
+    
+    ReactDOM.render(<App/>, root);
+</script>
+</html>
