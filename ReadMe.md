@@ -32,5 +32,10 @@ const Title = (
     Hello I'm a span
 );
 
-## STATE (04-)
+## STATE (04-07)
 - VanillaJs vs ReactJs : VanillaJs는 바뀌는 부분이 있으면 HTML 코드에서 관련된 태그 전부를 바꾸지만, ReactJs는 바뀌는 값만 바뀌고 나머지는 바뀌지 않는다.
+- state : ReactJs에서 값을 다룰 때 사용. 값을 변화시키고 자동으로 UI까지 rerender시켜준다. 이때 변하는 것은 전체 페이지가 아닌 해당 state값만!
+    - [A, B] = React.useState(C)
+        - A : 값
+        - B : 값을 변경하거나 다루는 함수
+        - C : 초기값

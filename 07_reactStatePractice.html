@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    function MinutesToHours() {
+        const [amount, setAmount] = React.useState();
+        const [flipped, setFlipped] = React.useState(false);
+        const onChange = (event) => {
+            setAmount(event.target.value);
+        };
+
+        const reset = () => setAmount(0);
+
+        const onFlip = () => {
+            setFlipped((current) => !current);
+            reset();
+        };
+
+        return(
+            <div>
+                <div>
+                    <label for="minutes">Minutes</label>
+                    <input 
+                        value={flipped ? amount * 60 : amount}
+                        id="minutes" 
+                        placeholder="Minutes" 
+                        type="number" 
+                        onChange={onChange}
+                        disabled={flipped === true}
+                    />
+                </div>
+                <div>
+                    <label for="hours">Hours</label>
+                    <input 
+                        value={flipped ? amount : Math.round(amount / 60)}
+                        id="hours" 
+                        placeholder="Hours" 
+                        type="number" 
+                        onChange={onChange}
+                        disabled={flipped === false}
+                    />
+                </div>
+                <button onClick={reset}>Reset</button>
+                <button onClick={onFlip}>Flip</button>
+            </div>
+        );
+    }
+
+    function KmToMiles() {
+        const [amount, setAmount] = React.useState();
+        const [flipped, setFlip] = React.useState(false);
+
+        const onChange = (event) => {
+            setAmount(event.target.value);
+        };
+
+        const reset = () => setAmount(0);
+
+        const onFlip = () => {
+            setFlip((current) => !current);
+            reset();
+        };
+
+        return(
+            <div>
+                <div>
+                    <label for="km">Km</label>
+                    <input 
+                        value={flipped ? amount * 1.609 : amount}
+                        id="km"
+                        type="number"
+                        placeholder="Km"
+                        onChange={onChange}
+                        disabled={flipped === true}
+                    />
+                </div>
+                <div>
+                    <label for="miles">Miles</label>
+                    <input 
+                        value={flipped ? amount : amount / 1.609}
+                        id="miles"
+                        type="number"
+                        placeholder="Miles"
+                        onChange={onChange}
+                        disabled={flipped === false}
+                    />
+                </div>
+                <button onClick={reset}>Reset</button>
+                <button onClick={onFlip}>Flip</button>
+            </div>
+        );
+    }
+
+    function App() {
+        const [index, setIndex] = React.useState("x");
+
+        const onSelect = (event) => {
+            setIndex(event.target.value);
+        };
+
+        return(
+            <div>
+                <h1>Super Converter</h1>
+                <select value={index} onChange={onSelect}>
+                    <option value="x">Select your units</option>
+                    <option value="0">Minutes & Hours</option>    
+                    <option value="1">Km & Miles</option>    
+                </select>
+                {index === "0" ? <MinutesToHours/> : null}      
+                {index === "1" ? <KmToMiles/> : null}
+            </div>
+        );
+        // {} 안에는 javascript 코드를 쓸 수 있다.
+
+    }
+
+    const root = document.getElementById("root");
+    ReactDOM.render(<App/>, root);
+</script>
+</html>
