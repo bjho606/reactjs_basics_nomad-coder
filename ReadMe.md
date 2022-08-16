@@ -57,7 +57,7 @@ const Title = (
 - 어떤 타입의 prop을 받고 있는지 체크해줌 -> 특정 타입만 받도록 설정해줄 수 있다.
 
     `<script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>`
-    
+
     `<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>`
 - Typescript와 같이 입력값의 타입을 미리 설정할 수 있다면 굳이 필요하지 않다.
 
@@ -66,3 +66,24 @@ const Title = (
 - 일반적으로 어떤 컴포넌트에서 state가 변하면, React에서는 해당 컴포넌트와 그 안에 포함된 모든 컴포넌트들을 re-render한다.
 - 이때, "React Memo"를 통해 re-render가 필요하지 않은 컴포넌트들을 다시 그리지 않게 설정할 수 있다.
 - 이 작업을 하지 않으면, 모든 컴포넌트를 다 rerender 하게 되므로, 속도가 느려질 수 있다!
+
+<br>
+
+---
+---
+## Create React App
+- Useful when making a react application
+- Helps with build setup and many other features
+
+### Pre-Settings
+1. install node
+2. install npx
+
+[Create React App](https://create-react-app.dev/)
+
+[Create React App Github](https://github.com/facebook/create-react-app)
+
+<br>
+TO BE CONTINUED on the next repository...
+
+[Go to next github session](https://github.com/bjho606/reactjs_create-react-app_nomad-coder)
