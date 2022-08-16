@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    // 중복되는 성질을 가진 컴포넌트들을 하나로 묶고(부모), props를 통해 달라지는 값만 전달받아 변화시키는 것!(자식)
+    // function Btn(props) {
+        // props is an "Object"!
+        // console.log(props);
+    // props로 전달되는 인자는 !반드시! 직접 받아서 처리해줘야한다! (자동으로 처리되지 않는다)
+    function Btn({text, fontSize = 14}) {    // prop : Object -> {}로 prop 인자에 직접 접근할 수도 있다.
+        // console.log(text, fontSize);
+        // console.log(text, "was rendered");
+        
+        return (
+            <button 
+                style={{
+                    backgroundColor: "tomato",
+                    color: "white",
+                    padding: "10px 20px",
+                    border: 0,
+                    borderRadius: 10,
+                    fontSize,
+                }}
+            >
+                {text}
+            </button>
+        );
+    }
+    
+    // Prop Types - 
+    Btn.propTypes = {
+        text: PropTypes.string.isRequired,
+        fontSize: PropTypes.number,
+    };
+
+    // PropTypes.checkPropTypes(myPropTypes, Btn);
+
+    function App() {
+         return(
+            <div>
+                <Btn text="Save Changes" fontSize={18} />
+                <Btn text={14} fontSize={"save"} />
+            </div>
+        );
+    }
+
+    const root = document.getElementById("root");
+    ReactDOM.render(<App/>, root);
+</script>
+</html>

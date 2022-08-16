@@ -1,4 +1,5 @@
 # A free ReactJs lesson from nomadcoders.co
+[Nomad Coders Lesson](https://nomadcoders.co/react-for-beginners)
 
 ## The Basics of React (01~03)
 - React JS - 어플리케이션이 아주 인터랙티브하도록 만들어주는 library. 엔진과 같다.
@@ -23,8 +24,10 @@
 
 <br>
 
-- JSX – 자바스크립트를 확장한 문법
+- JSX (JavaScript XML) – javascript에 xml을 추가한 확장한 문법
     - 보통의 HTML과 비슷. 그러나 property를 HTML 태그의 속성처럼 적으면 됨
+    - React 프로젝트에서 사용됨
+    - Babel은 JSX 문법을 브라우저에서 실행하기 전, javascript 형태의 코드로 변환해준다.
 
 ex)
 const Title = (
@@ -32,6 +35,9 @@ const Title = (
     Hello I'm a span
 );
 
+<br>
+
+---
 ## STATE (04-07)
 - VanillaJs vs ReactJs : VanillaJs는 바뀌는 부분이 있으면 HTML 코드에서 관련된 태그 전부를 바꾸지만, ReactJs는 바뀌는 값만 바뀌고 나머지는 바뀌지 않는다.
 - state : ReactJs에서 값을 다룰 때 사용. 값을 변화시키고 자동으로 UI까지 rerender시켜준다. 이때 변하는 것은 전체 페이지가 아닌 해당 state값만!
@@ -39,3 +45,24 @@ const Title = (
         - A : 값
         - B : 값을 변경하거나 다루는 함수
         - C : 초기값
+
+<br>
+
+---
+## Props (= Properties) (08-10)
+- 부모 컴포넌트 -> 자식 컴포넌트로 데이터를 보낼 수 있게 해주는 방법
+- 부모 컴포넌트에서 자식 컴포넌트를 호출할 때, property에 any_name으로 호출을 하면, 자식에서 'props'라는 Object 인자로 받아서 처리하게 됨. props에 들어가는 내용은 어떤 것이든(변수, 함수 등) 가능
+
+### Prop Types
+- 어떤 타입의 prop을 받고 있는지 체크해줌 -> 특정 타입만 받도록 설정해줄 수 있다.
+
+    `<script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>`
+    
+    `<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>`
+- Typescript와 같이 입력값의 타입을 미리 설정할 수 있다면 굳이 필요하지 않다.
+
+
+### Memo
+- 일반적으로 어떤 컴포넌트에서 state가 변하면, React에서는 해당 컴포넌트와 그 안에 포함된 모든 컴포넌트들을 re-render한다.
+- 이때, "React Memo"를 통해 re-render가 필요하지 않은 컴포넌트들을 다시 그리지 않게 설정할 수 있다.
+- 이 작업을 하지 않으면, 모든 컴포넌트를 다 rerender 하게 되므로, 속도가 느려질 수 있다!
